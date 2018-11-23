@@ -1,0 +1,292 @@
+"""
+#management construction
+    if 1>2:
+        message='111'
+    elif 1>3:
+        message='333'
+    else:
+        'message'foo'
+
+    ##trinary
+    foo = 'ttt' if x%2==0 else 'not ttt'
+
+#loop and array
+    for i in [1,2,3]
+        print(i)
+
+    result:
+        1
+        2
+        3
+
+#function
+def blabla(param1=0, param2=0):
+    return param1
+
+    using :
+        blabla(param2=1)
+        blabla(lambda x: x+1, 2) will return 1
+
+#string
+    ##multilple line
+    foo = \"\"\"
+        str1
+        str2
+        str3
+    "\"\"\
+
+    str = '12321231231'
+    print (str[3])
+    return :2
+
+#exception
+    try:
+        print(0/0)
+    except:
+        print('some message')
+
+#list ( compare with array in another language , but with some new functional)
+    x=list(range(10))
+    x[-1] last element
+    x[:3] slice first 3
+    x[3:] slice last 3
+    x[2:4] slice from 2 to 4
+
+    1 in x php in_array
+    x.extend([4,5,6]) php merge array
+    y=x+[4,5,6]
+    y.append(7) return some like 1,2,3,!!7!!
+    x,y=[1,2] php list
+
+#cortege immutable ( not changeable list )
+    my_list = [1,2] list
+    my_tuple =  (1,2) cortege
+    other_tuple=4,5 another cortege
+
+    my_tuple[1]=2
+    return exception "cortege not changeable"
+
+    def foo(x,y)
+        return x,y
+
+    bar,baz=foo(1,2)
+
+#dictionary ( associative array )
+    empty_dict = {}         #python way
+    empty_dict2 = dict();   #non python way
+
+    grades = {"John":1, "Tim":2}
+    john_grade = grades["John"]     #return 1
+    kate_has_grade = "Kate" in grades   #return false
+    kate_has_greade = grades.get("kate", "aaaa!!!")     #return aaaa!!!
+    grades["New man"] = 1
+
+    grades
+        .keys() #return keys
+        .values() #return values
+        .items() #return cortege
+
+#defaultdict
+    from collections import defaultdict
+    foo = defaultdict(int)
+    bar = foo[test]
+    print(bar) //return int() ,
+#counter
+    #many function work with counters, orders, unique
+    from collections import Counter
+    document=['foo', 'bar', 'bar', 'baz']
+    word_counts=Counter(document)
+
+    for word,count in word_counts.most_common(1):
+        print(word, count)
+
+    //return bar 2
+
+#sets
+    #fetures
+        - very fast "in" operation , faster then in list ( example chek list "stop" words )
+        - unique elements
+
+    s=set(); //create empty sets
+    s.add(1)
+    s.add(2) //return {1,2}
+    s.add(2) //return {1,2}
+    len(s) //return 2
+    2 in s //true
+    5 in s //false
+#null
+    in python - None
+    print ( x is None)
+
+    False = False, None, [], {}, "", set(), 0, 0.0
+
+    True = all other value
+
+
+    s = some_function_return_string()
+    if s:
+        first_char=s[0]
+    else:
+        first_char = ''
+
+    equal by python first_char=s and s[0]
+
+    one more good example safe_x =x or 0
+#some function
+    all([true, 1])  #true
+    all([false, 1]] #false - if one false then false
+    any([true, false]) # true - if one true then true
+
+    x=[1,2,3]
+    x.sort()
+    y = sorted(x, key=abs, reverse=true) #  сортировка по модулю и убыванию
+    y= sorted(word_counts.items(), key=lambda word,count:count, reverse=true) #сортировать слова по убывающему значению частотности
+
+#sequence generator
+    #четные числа
+    event_number = [x for x in range(5) if x%2 == 0] # [0,2,4]
+
+    ##null
+    zeros=[0 for _ in even_numbers] # заполняем нулями , длинна как в even_numbers
+
+    ##pair
+    pairs = [(x,y)
+        for x in rage(10)
+        for y in range(10)
+    ] # 100 pirs (0,0) (0,1) .... (9,8) (9,9)
+
+#generator
+    - обьект который можно последовательно перебрать
+    - ленивая загрузка
+    - генератор просматривается только один раз , если нужно просмотреть еще раз , пересоздаем
+
+    def lazy_range(n):
+        i=0
+        while i<n:
+            yield i
+            i+=1
+
+    for i in lazy_range(10):
+        do_something_with(i)
+
+    ##generator expression
+        - инициализируем генератор без yield но с кгруглыми скобками
+
+        bar = (i for i in xrange(10) if i%2==0)
+#random
+#regular expression
+#oop
+    class Set:
+        #constructor
+        def __init__(self, values=None):
+            s1 = Set();
+            s2 = Set([1,2,2,3])
+
+            self.dict={}
+
+            if values is not None:
+                for value in values: self.add(value)
+
+        #php __toString
+        def __repr__(self):
+            return "Set: " + str(self.dict.keys())
+
+        def add(self, value):
+            self.dict[value] = True
+
+
+    s = Set([1,2,3])
+    s.add(4)
+    print(s)
+
+#functional programming
+
+    def exp(base, power):
+        return base ** power
+
+    def two_to_the(power):
+        return exp(2, power)
+
+    print(two_to_the(3))
+
+    ##partial
+    from functools import partial
+
+    def exp(base, power):
+        return base ** power
+
+    two_to_the=partial(exp, 2)
+    print(two_to_the(3))
+
+    ##map, reduce, filter
+        def double(x):
+            return 2*x
+
+        xs=[1,2,3,4]
+        twice_xs=[double(x), for x in xs] #2,4,6,8
+        twice_xs=map(double, xs) # тоже что сверху
+        list_doubler = partial(map, double) # удвоитель списков
+        twice_xs=list_doubler(xs) #снова [2,4,6,8]
+
+        ###filter
+            x_evens=[x for x in xs if is_even(x)]
+            x_evens=filter(is_even, xs)
+        ###reduce
+            - обьединяет елементы списка
+            xs = [1,2,3,4]
+            x_product=reduce(multiply, xs) #1*2*3*4 = 24
+
+    ##enumerate
+        documents = []
+        for i in range(len(documents)):
+            document = documents[i]
+            do_something(i, document)
+
+        #value
+        for i, document in enumerate(documents):
+            do_something(i, document)
+
+        #index
+        for i, _ in enumerate(documents); do_something(i)
+
+    ##zip
+        list1 = ['a', 'b', 'c']
+        list2 = [1,2,3]
+        list(zip(list1, list2)) # = [('a', 1), ('b', 2), ('c', 3)]
+        #разединить
+        pairs = [('a', 1), ('b', 2), ('c', 3)]
+        letters, numbers = zip(*pairs) # * - выполняет распаковку аргументы
+        list(zip(('a',1), ('b', 2), ('c', 3))) #аналог функции выше
+            #return both [('a', 'b', 'c'), (1,2,3)]
+
+    ##args, kwargs in php  function foo(...$args)
+        - args - кортеж безымянных аргументов
+        - кортеж именованых аргументов
+
+        def magic(*args, **kwargs)
+            print ('ttt', args)
+            print( 'bbb', kwargs)
+
+        magic(1,2,key="word", key2="word2")
+
+        return
+            # ttt(1,2)
+            # bbb{'key2': 'word2', 'key': 'word'}
+
+
+
+
+"""
+def doubler(f):
+    def g(x):
+        return 2 * f(x)
+    return g
+
+def f1(x):
+    return x+1
+
+g = doubler(f1)
+
+print(g(3))  #8 (3+1) * 2
+print(g(-1)) #0 (-1+1) * 2
+
